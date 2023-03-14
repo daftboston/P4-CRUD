@@ -16,16 +16,7 @@ const ToDoForm = () =>  {
 
    //Valores por default
 
-   const fillForm = () => {
-    reset (
-        {
-            date: "1987-04-12",
-           title: "activitie",
-           description: "texto relleno" 
-
-        }
-    )
-   }
+  
 
    const emptyForm = ()=> {
     reset (
@@ -82,7 +73,7 @@ const ToDoForm = () =>  {
              </div>
          
           <button type="submit">Enviar Formulario</button>
-          <button onClick={fillForm}>llenar formulario</button>
+         
         </form>
 
         </div>
