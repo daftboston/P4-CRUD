@@ -7,7 +7,8 @@ const UserList = ({usersData}) =>  {
             <li key= {user.id}>
              <h4> <span>Nombre: </span> {user.username}   </h4>
              <h4> <span> Contraseña:</span> {user.password}   </h4>
-             <button >eliminar</button>        
+             <button >eliminar</button>  
+             <button onClick={()=>selectUser()}>Editar</button>      
             </li>
           
         ))

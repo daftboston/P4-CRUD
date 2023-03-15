@@ -36,6 +36,7 @@ const Form = ({createUser}) =>  {
      </div>
           <button type='submit'>acceder</button>
           <button onClick={fillForm}>llenar formulario</button>
+          
 </form>
 )
 }
