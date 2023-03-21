@@ -1,13 +1,48 @@
 import { useForm } from 'react-hook-form'; 
+import { useEffect } from 'react';
 
-const ToDoForm = () =>  {
+const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
 
     const {register, handleSubmit, formState: { errors }, reset}= useForm()
+
+
+    //UPDATE
+    useEffect (()=>{
+        //Determinar si hay un usuario seleccionado
+
+            
+     if (selectedTask) {   
+        // si no es un null  se cargara su info
+        reset(selectedTask)
+        
+     } else {// si no lo hay, el formulario estara vacio
+        emptyForm()
+        
+     }
+   
+    },[selectedTask])
+
+
    const submit = data => {
-    data.id = Date.now()
-    console.log(data);
-      // si el envio de info se envia, se ejecute el empty form
-      emptyForm()
+   
+
+    if (selectedTask ) {
+       updateTask(data)
+        
+    } else { data.id = Date.now()
+        console.log(data);
+        // data hacia => create task
+    
+        createTask(data)
+    
+          // si el envio de info se envia, se ejecute el empty form
+        emptyForm()
+        
+        
+    }
+    
+
+      
    }
 
    //Reset
@@ -22,7 +57,8 @@ const ToDoForm = () =>  {
     reset (
         {   date: "",
             title: "",
-            description: "" 
+            description: "",
+            isCompleted: false, 
 
         }
     )
@@ -51,7 +87,7 @@ const ToDoForm = () =>  {
                 {...register("title",{required:true})}
                 
                />
-               {errors.title?.type === 'required' && <p role="alert">TITLE IS REQUIRED</p>}
+               {errors.title?.type === 'required' && <p role="alert">Title is required</p>}
             </div>
             <div>
                 <label htmlFor="description">DESCRIPCION</label>
@@ -59,16 +95,18 @@ const ToDoForm = () =>  {
                  name= "descripton"
                  id="description"
                 type="text"
-                {...register("description")}
+                placeholder='enter descriprion'
+                {...register("description", {required:true, maxLenght:40})}
                 />
+                {errors.description?.type === 'required' && <p role="alert">description is required</p>}
             </div>
 
             <div>
-                <label htmlFor="terms">Completada</label>
+                <label htmlFor="Checkbox">Completada</label>
                 <input type="checkbox"
                   name="terms"
                   id="terms"
-                  {...register("checkbox")} 
+                  {...register("isCompleted")} 
                    />
              </div>
          
