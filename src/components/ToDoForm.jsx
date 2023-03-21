@@ -29,13 +29,9 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
     if (selectedTask ) {
        updateTask(data)
         
-    } else { data.id = Date.now()
-        console.log(data);
-        // data hacia => create task
+    } else { 
     
         createTask(data)
-    
-          // si el envio de info se envia, se ejecute el empty form
         emptyForm()
         
         

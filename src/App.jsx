@@ -1,96 +1,89 @@
-import { Component, useState } from 'react'
+import { Component, useState, useEffect } from 'react'
+import axios from 'axios'
 
 import './App.css'
-import Form from './components/Form'
-import ToDoForm from "./components/ToDoForm"
-import UserList from './components/UsersList'
-import ActivitieList from './components/ActivitieList'
 
+import ToDoForm from "./components/ToDoForm"
+import ActivitieList from './components/ActivitieList'
 import tasks from "./data/tasks"
 
 
 
 
-function App() {
+function App() { 
+  //READ
+  const [activities, setActivities]= useState ([])
 
-  //CRUD- CREATE READ UPDATE DELETE
-  // Acciones mas basicas que podemos hacer con nuestras entidades, a partir de metodos get, put, delete. 
+  useEffect (()=>{
+    getData()
+    },[])
 
-
-
-  
-
-  
-  const[users, setUsers]= useState([
-    {
-      username: "Daniel",
-      password: "4321"
+    const getData = ()=>{
+      axios
+      .get ("https://todos-crud.academlo.tech/todos/")
+      .then(resp => setActivities(resp.data))
+      .catch ( error => console.error(error) )
+   
     }
-  ])
-
-  const [activities, setActivities]= useState (tasks)
-  
-
-  // READ
-  //consultar info del app hasta los hermanos, guardada en el estado.
-
-
-  //CREATE
-  // Utilizando la informacion generada pr el formulario, vamos a añadir un nuevo objeto al estado
-
-  const addTask = data=>{
-    alert ("añadido!!!")
-    console.warn(data);
-
-    //Añadir nuevos elementos a un estado que tiene un formato de arreglo
-    //Mutabilidad /Inmutabilidad
-    //Los estados no deben mutar nunca
-    //Las modificaciones en un estado solo deben realizarse a traves de la funcion seteadora
-
-    //SPREAD OPERATOR [...arregloPrevio, nuevoElemento1, nuevoElemento2]
-
     
-    setActivities([...activities,data])
+  //UPDATE
+  const [taskUpdate, setTaskUpdate]=useState(null)
+
+
+
+
+//AÑADIR
+  const addTask = data=>{
+    /*
+   axios
+    .post("url",body)
+    */
+   axios
+     .post("https://todos-crud.academlo.tech/todos/",data)
+     .then((resp)=> getData())
+     .catch (error=> console.error(error))
+
   }
 
-  //DELETE 
-  // La posibilidad de detonar una accion de eliminacion
+  
+
+
+  //DELETE
+
  const deleteTask =idTask=>{
- // alert(idTask)
-
-  // Filter, obtener a todos los usuarios que no sean el que queremos eliminar, 
-  // El usuario que queremeos eliminar, no estaria dentro del arreglo que se genera con el filter.
-
-  //Eliminacion por descarte
-
-  const filteredTask =  tasks.filter(task=> task.id!== idTask)
-  setActivities(filteredTask)
-
+  axios
+   .delete (`https://todos-crud.academlo.tech/todos/${idTask}/`)
+   .then (()=>getData())
+   .catch(error => console.error(error))
 }
 
- //UPDATE
+ 
 
+//???
  const selectTask = taskData =>{
   //alert ("actividad seleccionada")
   console.warn(taskData);
   setTaskUpdate(taskData)
  }
 
- const [taskUpdate, setTaskUpdate]=useState(null)
 
+
+
+ //UPDATE
  const taskactualization= data2=> {
-  console.log(data2);
-  //Encontrar entro del arreglo del estado el objeto( el usuario ) que va a ser actualizad.
-  // Reemplzamos el obejto actual por el nuevo objeto  data
-  //seteamos el estado
+  /* axios
+  .put("url", body) */
+    axios
+      .put(`https://todos-crud.academlo.tech/todos/${data2.id}/`, data2)
+      .then(()=>{
+        getData()
+        setTaskUpdate(null)        
+      })
+      .catch(error=> console.error(error))
+ 
+ 
 
-  const index = tasks.findIndex(task=> task.id===data2.id )
 
-  tasks[index]= data2
-
-  setActivities([...tasks])
-  
-  setTaskUpdate(null)
 
 
  }

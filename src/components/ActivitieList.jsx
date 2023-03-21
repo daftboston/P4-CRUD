@@ -11,7 +11,7 @@ const ActivitieList = ({taskData,deleteTaskAction,selectTask}) =>  {
              <h4> <span> DESCRIPCION:</span> {task.description} </h4> 
              <h4> <span> COMPLETADA:</span> {task.isCompleted? "true":"false"} </h4>   
              <button onClick={()=>deleteTaskAction(task.id)}>Eliminar</button> 
-             <button onClick={()=>selectTask(task)}>Editar</button>    
+             <button onClick={(task)=>selectTask(task)}>Editar</button>    
         </li>
 
     ))  
