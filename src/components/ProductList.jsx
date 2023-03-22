@@ -5,15 +5,31 @@ const ProductList = ({productData,deleteProductAction,selectProduct}) =>  {
     { 
       productData?.map(product=>(
         
-        <li key= {product.id}>
-             
-             <h4> <span> NAME:</span> {product.name} </h4> 
-             <h4> <span> CATEGORY:</span> {product.category} </h4> 
-             <h4> <span> PRICE:</span> {product.price} </h4> 
-             <h4> <span> IS AVALABLE:</span> {product.isAvailable? "true":"false"} </h4>   
-             <button onClick={()=>deleteProductAction(product.id)}>Eliminar</button> 
-             <button onClick={()=>selectProduct(product)}>Editar</button>    
-        </li>
+           <li key= {product.id}>
+              
+
+             <h2>{product.name} </h2> 
+             <div className="info">
+             <h4>  Category </h4> 
+             <h3>{product.category}</h3>
+             </div>
+             <div className="info">
+             <h4> <span> Price</span>  </h4> 
+             <h3>{product.price}</h3>
+             </div>
+
+             <div className="info">  
+             <h4> <span> Is Avalible:</span>  </h4>  
+             <h3>{product.isAvailable? "true":"false"}</h3> 
+             </div>
+             <div className="buttons">
+             <button className="deleteB" onClick={()=>deleteProductAction(product.id)}><i className='bx bxs-trash' ></i></button> 
+             <button  className="editB" onClick={()=>selectProduct(product)}><i className='bx bxs-pencil'></i></button>
+             </div>
+                
+           </li>
+      
+        
 
     ))  
     }      

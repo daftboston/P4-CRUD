@@ -2,47 +2,156 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: aliceblue;
+  --blue: #01105a; 
+  --lightgray: #b0b0b4; 
+  --gray: #434343;
 }
 
-body {
-  padding: 1rem;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    background-color: ;
+
+.App{
+  
+  display: flex;  
+  background-color:aliceblue;    
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-size: auto;   
+
+}
+
+.boxForm{
+  height: 50px;
+  display: flex; 
+  flex-direction: column;
+}
+
+.checkbox{
+  width: 40px;
+  height: 15px;
+}
+
+
+
+p{
+  color: tomato;
+}
+
+
+label{
+  
+  color: var(--blue);
+  font-weight: bold;  
+  font-size:12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+input{
+  border: 1.5px solid rgb(232, 229, 229);
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  color:var(--gray);  
 }
 
 form {
   width: 350px;
-  border: 1px solid grey;
+  border: 1px solid rgb(188, 188, 191);
   padding: 1.5rem;
+  box-shadow: 1px 1px 1px rgb(202, 198, 198);
 }
 
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem auto;
-}
-
-.input-inline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-button {
+.send {
+  background-color: rgb(133, 133, 223);
   margin: auto;
   display: block;
+  color: #fffefe;
+  font-family: 'Roboto', sans-serif;
+  width: 150px;
+  height: 23px;
+  font-size: 12px;
+  border-radius: 3px;
+  border: #01105a;
 }
+
+.info{
+  padding: 7px;
+  
+}
+
+ul{
+ 
+  padding: 50px;
+  width:auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-items: center;
+}
+
 
 li {
   list-style: none;
   border: 1px solid grey;
   margin: 1rem auto;
   padding: 1rem;
+  color: var(--gray);
+  width: 280px;
+  
 }
-li > h4 {
-  font-weight: 400;
+
+h2{ color: #162b94; 
+
 }
-li span {
-  font-weight: bold;
+
+h4{
+  color: rgb(171, 173, 176);
+  font-weight: 200;
+}
+
+.buttons{
+  display: flex;
+  padding: 10px;
+
+}
+
+.editB{
+  background-color: rgb(133, 133, 223);
+  margin: auto;
+  display: block;
+  color: #f4bcbc;
+  font-family: 'Roboto', sans-serif;
+  width: 40px;
+  height: 40px;
+  font-size: 12px;
+  border-radius: 3px;
+  border: #01105a;
+ 
+
+}
+
+.deleteB{
+  background-color: rgb(235, 105, 62);
+  margin: auto;
+  display: block;
+  color: #f4bcbc;
+  font-family: 'Roboto', sans-serif;
+  width: 40px;
+  height: 40px;
+  font-size: 12px;
+  border-radius: 3px;
+  border: #01105a;
+}
+
+i{
+  background-color:transparent;
+  margin: auto;
+  display: block;
+  color: #fffefe;
+  font-family: 'Roboto', sans-serif;
+  width: 20px;
+  height: 50px;
+  height: 23px;
+  font-size: 25px;
+  border-radius: 3px;
+  border: #01105a;
 }

@@ -62,7 +62,7 @@ const ProductsForm = ({createProduct, selectedProduct,updateProduct}) =>  {
 
     return (
 
-    <div>
+    <div className='inputCard'>
 
     <form onSubmit={handleSubmit(submit)}>
            {/* <div>
@@ -75,35 +75,36 @@ const ProductsForm = ({createProduct, selectedProduct,updateProduct}) =>  {
             </div>
     */}
           
-            <div>
+            <div className='boxForm'>
                 <label htmlFor="name">Name</label>
                 <input
                  name= "name"
                  id="name"
                 type="text"
+                placeholder='Enter product name'
                 {...register("name",{required:true})}
                 
                />
                {errors.name?.type === 'required' && <p role="alert">Name is required</p>}
             </div>
-            <div>
-                <label htmlFor="description">CATEGORY</label>
+            <div className='boxForm'>
+                <label htmlFor="description">Category</label>
                 <input
                  name= "category"
                  id="category"
                 type="text"
-                placeholder='enter category'
+                placeholder='Enter product category'
                 {...register("category", {required:true, maxLenght:40})}
                 />
                 {errors.category?.type === 'required' && <p role="alert">category is required</p>}
             </div>
-            <div>
-                <label htmlFor="description">PRICE</label>
+            <div className='boxForm'>
+                <label htmlFor="description">Price</label>
                 <input
                  name= "price"
                  id="price"
                 type="number"
-                placeholder='enter price'
+                placeholder='Enter product price'
                 {...register("price", {required:true, maxLenght:40})}
                 />
                 {errors.price?.type === 'required' && <p role="alert">description is required</p>}
@@ -114,14 +115,16 @@ const ProductsForm = ({createProduct, selectedProduct,updateProduct}) =>  {
 
             <div>
                 <label htmlFor="Checkbox">Is Available</label>
-                <input type="checkbox"
+                <input 
+                className='checkbox'
+                type="checkbox"
                   name="isAvailable"
                   id="isAvailable"
                   {...register("isAvailable")} 
                    />
              </div>
          
-          <button type="submit">Enviar Formulario</button>
+          <button className='send' type="submit">Enviar Formulario</button>
          
         </form>
 

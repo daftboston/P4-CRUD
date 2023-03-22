@@ -91,22 +91,22 @@ function App() {
 
   return (
     <div className="App">
-      <h1>REACT HOOK FORM</h1>
+    
 
       
    
-      <h2>to do form</h2>
+      <h2>Products Form</h2>
       <ProductsForm 
       createProduct={data=>addProduct(data)}
       selectedProduct={productUpdate}
       updateProduct={data2 => productActualization(data2)}/>
 
+      <div className='productList'>
+          <ProductList productData={products}
+          deleteProductAction={id=>deleteProduct(id)}
+          selectProduct={(product)=>selectProduct(product)}/>
 
-      <ProductList productData={products}
-      deleteProductAction={id=>deleteProduct(id)}
-      selectProduct={(product)=>selectProduct(product)}/>
-
-        
+      </div>
     
     </div>
   )
