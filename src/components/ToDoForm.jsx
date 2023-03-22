@@ -51,10 +51,10 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
 
    const emptyForm = ()=> {
     reset (
-        {   date: "",
-            title: "",
-            description: "",
-            isCompleted: false, 
+        {   name: "",
+            category: "",
+            price: "",
+            isAvalible: false, 
 
         }
     )
@@ -65,44 +65,59 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
     <div>
 
     <form onSubmit={handleSubmit(submit)}>
-            <div>
+           {/* <div>
              <label htmlFor="id">FECHA</label>
                 <input
                  name= "id"
                  id="id"
                 type="date"
-               {...register("date",{required:true})}/>
+               {...register("date",{required:false})}/>
             </div>
+    */}
           
             <div>
-                <label htmlFor="title">TITULO</label>
+                <label htmlFor="name">Name</label>
                 <input
-                 name= "title"
-                 id="title"
+                 name= "name"
+                 id="name"
                 type="text"
-                {...register("title",{required:true})}
+                {...register("name",{required:true})}
                 
                />
-               {errors.title?.type === 'required' && <p role="alert">Title is required</p>}
+               {errors.name?.type === 'required' && <p role="alert">Name is required</p>}
             </div>
             <div>
-                <label htmlFor="description">DESCRIPCION</label>
+                <label htmlFor="description">CATEGORY</label>
                 <input
-                 name= "descripton"
-                 id="description"
+                 name= "category"
+                 id="category"
                 type="text"
-                placeholder='enter descriprion'
-                {...register("description", {required:true, maxLenght:40})}
+                placeholder='enter category'
+                {...register("category", {required:true, maxLenght:40})}
                 />
-                {errors.description?.type === 'required' && <p role="alert">description is required</p>}
+                {errors.category?.type === 'required' && <p role="alert">category is required</p>}
+            </div>
+            <div>
+                <label htmlFor="description">PRICE</label>
+                <input
+                 name= "price"
+                 id="price"
+                type="text"
+                placeholder='enter price'
+                {...register("price", {required:true, maxLenght:40})}
+                />
+                {errors.price?.type === 'required' && <p role="alert">description is required</p>}
             </div>
 
+
+            
+
             <div>
-                <label htmlFor="Checkbox">Completada</label>
+                <label htmlFor="Checkbox">Is Avalible</label>
                 <input type="checkbox"
-                  name="terms"
-                  id="terms"
-                  {...register("isCompleted")} 
+                  name="isAvalible"
+                  id="isAvalible"
+                  {...register("isAvalible")} 
                    />
              </div>
          

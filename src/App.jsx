@@ -5,7 +5,7 @@ import './App.css'
 
 import ToDoForm from "./components/ToDoForm"
 import ActivitieList from './components/ActivitieList'
-import tasks from "./data/tasks"
+
 
 
 
@@ -20,7 +20,7 @@ function App() {
 
     const getData = ()=>{
       axios
-      .get ("https://todos-crud.academlo.tech/todos/")
+      .get ("https://products-crud.academlo.tech/products/")
       .then(resp => setActivities(resp.data))
       .catch ( error => console.error(error) )
    
@@ -39,7 +39,7 @@ function App() {
     .post("url",body)
     */
    axios
-     .post("https://todos-crud.academlo.tech/todos/",data)
+     .post("https://products-crud.academlo.tech/products/",data)
      .then((resp)=> getData())
      .catch (error=> console.error(error))
 
@@ -52,7 +52,7 @@ function App() {
 
  const deleteTask =idTask=>{
   axios
-   .delete (`https://todos-crud.academlo.tech/todos/${idTask}/`)
+   .delete (`https://products-crud.academlo.tech/products/${idTask}/`)
    .then (()=>getData())
    .catch(error => console.error(error))
 }
@@ -74,7 +74,7 @@ function App() {
   /* axios
   .put("url", body) */
     axios
-      .put(`https://todos-crud.academlo.tech/todos/${data2.id}/`, data2)
+      .put(`https://products-crud.academlo.tech/products/${data2.id}/`, data2)
       .then(()=>{
         getData()
         setTaskUpdate(null)        
