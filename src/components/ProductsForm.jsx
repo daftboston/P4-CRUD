@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'; 
 import { useEffect } from 'react';
 
-const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
+const ProductsForm = ({createProduct, selectedProduct,updateProduct}) =>  {
 
     const {register, handleSubmit, formState: { errors }, reset}= useForm()
 
@@ -11,27 +11,27 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
         //Determinar si hay un usuario seleccionado
 
             
-     if (selectedTask) {   
+     if (selectedProduct) {   
         // si no es un null  se cargara su info
-        reset(selectedTask)
+        reset(selectedProduct)
         
      } else {// si no lo hay, el formulario estara vacio
         emptyForm()
         
      }
    
-    },[selectedTask])
+    },[selectedProduct])
 
 
    const submit = data => {
    
 
-    if (selectedTask ) {
-       updateTask(data)
+    if (selectedProduct) {
+       updateProduct(data)
         
     } else { 
     
-        createTask(data)
+        createProduct(data)
         emptyForm()
         
         
@@ -102,7 +102,7 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
                 <input
                  name= "price"
                  id="price"
-                type="text"
+                type="number"
                 placeholder='enter price'
                 {...register("price", {required:true, maxLenght:40})}
                 />
@@ -129,4 +129,4 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
 
 )
 }
-export default ToDoForm
+export default ProductsForm

@@ -3,8 +3,8 @@ import axios from 'axios'
 
 import './App.css'
 
-import ToDoForm from "./components/ToDoForm"
-import ActivitieList from './components/ActivitieList'
+import ProductsForm from "./components/ProductsForm"
+import ProductList from './components/ProductList'
 
 
 
@@ -12,7 +12,7 @@ import ActivitieList from './components/ActivitieList'
 
 function App() { 
   //READ
-  const [activities, setActivities]= useState ([])
+  const [products, setProducts]= useState ([])
 
   useEffect (()=>{
     getData()
@@ -21,26 +21,26 @@ function App() {
     const getData = ()=>{
       axios
       .get ("https://products-crud.academlo.tech/products/")
-      .then(resp => setActivities(resp.data))
+      .then(resp => setProducts(resp.data))
       .catch ( error => console.error(error) )
    
     }
     
   //UPDATE
-  const [taskUpdate, setTaskUpdate]=useState(null)
+  const [productUpdate, setProductUpdate]=useState(null)
 
 
 
 
 //AÑADIR
-  const addTask = data=>{
+  const addProduct = data=>{
     /*
    axios
     .post("url",body)
     */
    axios
      .post("https://products-crud.academlo.tech/products/",data)
-     .then((resp)=> getData())
+     .then((resp)=> getData() )
      .catch (error=> console.error(error))
 
   }
@@ -50,9 +50,9 @@ function App() {
 
   //DELETE
 
- const deleteTask =idTask=>{
+ const deleteProduct =idProduct=>{
   axios
-   .delete (`https://products-crud.academlo.tech/products/${idTask}/`)
+   .delete (`https://products-crud.academlo.tech/products/${idProduct}/`)
    .then (()=>getData())
    .catch(error => console.error(error))
 }
@@ -60,24 +60,24 @@ function App() {
  
 
 //???
- const selectTask = taskData =>{
+ const selectProduct = productData =>{
   //alert ("actividad seleccionada")
-  console.warn(taskData);
-  setTaskUpdate(taskData)
+  console.warn(productData);
+  setProductUpdate(productData)
  }
 
 
 
 
  //UPDATE
- const taskactualization= data2=> {
+ const productActualization= data2=> {
   /* axios
   .put("url", body) */
     axios
       .put(`https://products-crud.academlo.tech/products/${data2.id}/`, data2)
       .then(()=>{
         getData()
-        setTaskUpdate(null)        
+        setProductUpdate(null)        
       })
       .catch(error=> console.error(error))
  
@@ -96,15 +96,15 @@ function App() {
       
    
       <h2>to do form</h2>
-      <ToDoForm 
-      createTask={data=>addTask(data)}
-      selectedTask={taskUpdate}
-      updateTask={data2 => taskactualization(data2)}/>
+      <ProductsForm 
+      createProduct={data=>addProduct(data)}
+      selectedProduct={productUpdate}
+      updateProduct={data2 => productActualization(data2)}/>
 
 
-      <ActivitieList taskData={activities}
-      deleteTaskAction={id=>deleteTask(id)}
-      selectTask={(task)=>selectTask(task)}/>
+      <ProductList productData={products}
+      deleteProductAction={id=>deleteProduct(id)}
+      selectProduct={(product)=>selectProduct(product)}/>
 
         
     
