@@ -54,7 +54,7 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
         {   name: "",
             category: "",
             price: "",
-            isAvalible: false, 
+            isAvailable: false, 
 
         }
     )
@@ -113,11 +113,11 @@ const ToDoForm = ({createTask, selectedTask,updateTask}) =>  {
             
 
             <div>
-                <label htmlFor="Checkbox">Is Avalible</label>
+                <label htmlFor="Checkbox">Is Available</label>
                 <input type="checkbox"
-                  name="isAvalible"
-                  id="isAvalible"
-                  {...register("isAvalible")} 
+                  name="isAvailable"
+                  id="isAvailable"
+                  {...register("isAvailable")} 
                    />
              </div>
          
